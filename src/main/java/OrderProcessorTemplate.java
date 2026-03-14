@@ -17,12 +17,18 @@ public abstract class OrderProcessorTemplate {
 
     }
 
-    protected abstract void validateOrder(Order order);
+    protected void validateOrder(Order order){
+        int howMuch = order.getItems().length;
+        if (howMuch < 1 || howMuch > 5) {
+            throw new IllegalArgumentException("Invalid amount of items: " + howMuch);
+        }
+    }
     protected abstract boolean fraudCheck(Order order);
 
     protected void calculatePrice(Order order){
         if (order.getTotalPrice() > 20000) {
-            // make a discount
+            order.setTotalPrice(order.getTotalPrice() * 0.9);
+            System.out.println("You have 10% discount");
         }
     }
 
