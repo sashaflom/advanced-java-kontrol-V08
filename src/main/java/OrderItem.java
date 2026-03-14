@@ -42,7 +42,7 @@ public class OrderItem {
         if(this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItem orderItem = (OrderItem) o;
-        return id == orderItem.id && Double.compare(price, orderItem.price) == 0 && Objects.equals(name, orderItem.name);
+        return id == orderItem.id && price == orderItem.price && Objects.equals(name, orderItem.name);
     }
 
     @Override
