@@ -52,4 +52,12 @@ public class Order {
     public int getId() {
         return id;
     }
+
+    public void makeReturned() throws IllegalStateException{
+        if (this.status == OrderStatus.DELIVERED) {
+            this.status = OrderStatus.RETURNED;
+        } else {
+            throw new IllegalStateException("Can only return delivered orders");
+        }
+    }
 }
